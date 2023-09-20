@@ -1,0 +1,286 @@
+@model IEMS_FrontApplications.Models.clsLicence
+@{
+    ViewBag.Title = "LicenceView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>LicenceView</h2>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+@using (Html.BeginForm())
+{
+    <div class="card">
+        <div class="card-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Permanent Account No. of Property</label>
+                            @Html.TextBoxFor(m => m.PropertyPanNo, new { @class = "form-control", id = "txtPropertyPanNo" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>TIN No.<span style="color:red">*</span></label>
+                            @Html.TextBoxFor(m => m.PropertyTinNo, new { @class = "form-control", @required = "required", id = "txtTinNo" })
+                            @Html.ValidationMessageFor(m => m.PropertyTinNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>GST No.<span style="color:red">*</span></label>
+                            @Html.TextBoxFor(m => m.PropertyGstNo, new { @class = "form-control", @required = "required", id = "txtGstNo" })
+                            @Html.ValidationMessageFor(m => m.PropertyGstNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Name of Hotel Bar<span style="color:red">*</span></label>
+                            @Html.TextBoxFor(m => m.HotelBarName, new { @class = "form-control", @required = "required", id = "txtBarName" })
+                            @Html.ValidationMessageFor(m => m.HotelBarName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Address of Hotel Bar<span style="color:red">*</span></label>
+                            @Html.TextBoxFor(m => m.HotelAddress, new { @class = "form-control", @required = "required", id = "txtBarAddress" })
+                            @Html.ValidationMessageFor(m => m.PropertyTinNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>State<span style="color:red">*</span></label>
+                            @Html.DropDownListFor(m => m.StateName, Model.lstState, new { @class = "form-control", id = "ddlstate", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.StateName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>District<span style="color:red">*</span></label>
+                            @Html.DropDownListFor(m => m.DistrictName, Model.lstDistricts, new { @class = "form-control", id = "ddldistrict", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.DistrictName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="ddlpropertyarea">Property in Area<span style="color:red">*</span></label>
+                            @Html.DropDownListFor(m => m.PropertyAreaName, Model.lstPropertyArea, new { @class = "form-control", id = "ddlpropertyarea", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.PropertyAreaName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="ddlpropertylocation">Location of Property</label>
+                            @Html.DropDownListFor(m => m.PropertyLocationName, Model.lstPropertyLocation, new { @class = "form-control", id = "ddlpropertylocation"})
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="ddlareapopulation">Population of Area</label>
+                            @Html.DropDownListFor(m => m.AreaPopulation, Model.lstAreaPopulation, new { @class = "form-control", id = "ddlareapopulation" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="ddlmuncipal">Municipal / Tehsil Name<span style="color:red">*</span></label>
+                            @Html.DropDownListFor(m => m.MuncipalName, Model.lstMuncipal, new { @class = "form-control", id = "ddlmunicipal", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.MuncipalName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="ddlcategoryhotel">Category of Hotel<span style="color:red">*</span></label>
+                            @Html.DropDownListFor(m => m.HotelCategoryName, Model.lstHotelCategory, new { @class = "form-control", id = "ddlcategoryhotel", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.HotelCategoryName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="ddlsubcategoryhotel">Sub Category<span style="color:red">*</span></label>
+                            @Html.DropDownListFor(m => m.SubCategoryName, Model.lstSubHotelCategory, new { @class = "form-control", id = "ddlsubcategoryhotel", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.SubCategoryName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="ddlpropertyowner">Ownership of the Property<span style="color:red">*</span></label>
+                            @Html.DropDownListFor(m => m.OwnerShipName, Model.lstPropertyOwnership, new { @class = "form-control", id = "ddlpropertyowner", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.OwnerShipName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="txtAreaProperty">Total Area Of Land of Property (in Sq.Ft)<span style="color:red">*</span></label>
+                            @Html.TextBoxFor(m => m.TotalAreaProperty, new { @class = "form-control", @required = "required", @type = "number", id = "txtAreaProperty" })
+                            @Html.ValidationMessageFor(m => m.TotalAreaProperty, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="txtAreaLand">Constructed Area on the Land (in Sq.Ft)<span style="color:red">*</span></label>
+                            @Html.TextBoxFor(m => m.ConstructedAreaLand, new { @class = "form-control", @required = "required", @type = "number", id = "txtAreaLand" })
+                            @Html.ValidationMessageFor(m => m.ConstructedAreaLand, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Located Near NH/SH</label>
+                            <label>
+                                @Html.RadioButtonFor(model => model.LocatedNearNhSh, "Yes", new { @checked = "checked" }) Yes
+                            </label>
+                            <label>
+                                @Html.RadioButtonFor(model => model.LocatedNearNhSh, "No") No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Double Rooms(AC)</label>
+                            @Html.TextBoxFor(m => m.ACDoubleRoomCount, new { @class = "form-control", @type = "number", id = "txtdACcount" })
+                            @Html.ValidationMessageFor(m => m.ACDoubleRoomCount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Single Rooms(AC)</label>
+                            @Html.TextBoxFor(m => m.ACSingleRoomCount, new { @class = "form-control", @type = "number", id = "txtsACcount" })
+                            @Html.ValidationMessageFor(m => m.ACSingleRoomCount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Double Rooms(Non-AC)</label>
+                            @Html.TextBoxFor(m => m.NACDoubleRoomCount, new { @class = "form-control", @type = "number", id = "txtdNACcount" })
+                            @Html.ValidationMessageFor(m => m.NACDoubleRoomCount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Single Rooms(Non-AC)</label>
+                            @Html.TextBoxFor(m => m.NACSingleRoomCount, new { @class = "form-control", @type = "number", id = "txtsNACcount" })
+                            @Html.ValidationMessageFor(m => m.NACSingleRoomCount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <h3 style="background-color:cyan">Particulars of Bar</h3>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Total Rooms in Hotel</label>
+                            @Html.TextBoxFor(m => m.TotalHotelRoom, new { @class = "form-control", @type = "number", id = "txtRoomcount" })
+                            @Html.ValidationMessageFor(m => m.TotalHotelRoom, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Bar Area(in Sq. Ft.)</label>
+                            @Html.TextBoxFor(m => m.BarArea, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.BarArea, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+
+                            <label>Seating Capacity(No of Persons)</label>
+                            @Html.TextBoxFor(m => m.BarSeatingCapacity, new { @class = "form-control", @type = "number", id = "txtRoomCapacity" })
+                            @Html.ValidationMessageFor(m => m.BarSeatingCapacity, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Situated Floor</label>
+                            @Html.TextBoxFor(m => m.BarFloor, new { @class = "form-control", @type = "number", id = "txtSituatedFloor" })
+                            @Html.ValidationMessageFor(m => m.BarFloor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Fully airconditioned</label>
+                            Yes
+                            @Html.RadioButtonFor(model => model.FullyAirConditoned, "Yes", new { @checked = "checked" })
+                            No
+                            @Html.RadioButtonFor(model => model.FullyAirConditoned, "No")
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Separate Toilet Facility for Men and Women</label>
+                            Yes
+                            @Html.RadioButtonFor(model => model.ToiletFacityMOrW, "Yes", new { @checked = "checked" })
+                            No
+                            @Html.RadioButtonFor(model => model.ToiletFacityMOrW, "No")
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Store</label>
+                            Yes
+                            @Html.RadioButtonFor(model => model.BarStore, "Yes", new { @checked = "checked" })
+                            No
+                            @Html.RadioButtonFor(model => model.BarStore, "No")
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Bar Counter</label>
+                            Yes
+                            @Html.RadioButtonFor(model => model.BarCounter, "Yes", new { @checked = "checked" })
+                            No
+                            @Html.RadioButtonFor(model => model.BarCounter, "No")
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Location of Bar Counter(if YES)</label>
+                            @Html.TextBoxFor(m => m.BarCounterLocation)
+                            @Html.ValidationMessageFor(m => m.BarCounterLocation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <h3 style="background-color:cyan">Particulars of Extra Resturent</h3>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Seating Capacity(No of Persons)</label>
+                            @Html.TextBoxFor(m => m.BarFloor, new { @class = "form-control", id = "txtexroomcap" })
+                            @Html.ValidationMessageFor(m => m.BarFloor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Situated Floor</label>
+                            @Html.TextBoxFor(m => m.SituatedFloorExtraRes, new { @class = "form-control", id = "txtexfloorcount" })
+                            @Html.ValidationMessageFor(m => m.SituatedFloorExtraRes, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Fully AirConditioned</label>
+                            No
+                            @Html.RadioButtonFor(model => model.FullyAirConditionedExtraRes, "No")
+                            Yes
+                            @Html.RadioButtonFor(model => model.FullyAirConditionedExtraRes, "Yes", new { @checked = "checked" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Area of Extra Restuarent(in Sq. Ft)</label>
+                            @Html.TextBoxFor(m => m.AreaOfExtraResturent, new { @class = "form-control", id = "txtexareaRes" })
+                            @Html.ValidationMessageFor(m => m.AreaOfExtraResturent, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Total TurnOver(in Rs)<span style="color:red">*</span></label>
+                            @Html.TextBoxFor(m => m.TotalTurnOver, new { @class = "form-control", @required = "required", id = "txtrevenue" })
+                            @Html.ValidationMessageFor(m => m.TotalTurnOver, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" id="btnspart">
+        <div class="col-md-offset-2 col-md-8">
+            <input type="submit" id="btnsubmit" value="Save & Continue" class="btn btn-success" />
+            <input type="reset" id="btnreset" value="Close" class="btn btn-danger" />
+        </div>
+    </div>
+}
