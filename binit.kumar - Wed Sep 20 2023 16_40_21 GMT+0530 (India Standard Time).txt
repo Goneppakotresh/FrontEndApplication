@@ -1,0 +1,219 @@
+@model IEMS_FrontApplications.Models.clsLicence
+@{
+    ViewBag.Title = "ApplicationDetail";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ApplicationDetail</h2>
+<style>
+    .resizable {
+        max-height: 100px; /* You can adjust the maximum height as needed */
+        resize: vertical; /* Allows vertical resizing only */
+    }
+</style>
+
+
+@using (Html.BeginForm())
+{
+    <form asp-action="MasterDistrict">
+        <div class="card">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>License For Year<span style="color:red">*</span></label>
+                                @Html.DropDownListFor(model => model.ApplicationLicYearID, Model.ApplicantFinYear, "Select One", new { @class = "form-control", id = "ApplicantFinYear" })
+                                @Html.HiddenFor(model => model.ApplicationLicYearID, new { id = "ApplicationLicYearID" }) <!-- Add a hidden field for State ID -->
+                                @Html.ValidationMessageFor(model => model.licenceDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Date Of Registration <span style="color:red">*</span></label>
+                                @Html.EditorFor(model => model.ApplicantRegDate, new { htmlAttributes = new { @class = "form-control  ", id = "ApplicantRegDate" } })
+                                @*//@Html.HiddenFor(model => model.Status, new { id = "Status" })*@
+                                @Html.ValidationMessageFor(model => model.ApplicantRegDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Type of Licence Requested<span style="color:red">*</span></label>
+                                @Html.DropDownListFor(model => model.ApplicationLicID, Model.ApplicantLicType, "Select Type of Licence", new { @class = "form-control", id = "ApplicantLicType" })
+                                @Html.HiddenFor(model => model.ApplicationLicID, new { id = "ApplicationLicType" }) <!-- Add a hidden field for country ID -->
+                                @Html.ValidationMessageFor(model => model.ApplicationLicName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Select District Excise Officer<span style="color:red">*</span></label>
+                                @Html.DropDownListFor(model => model.DEODistrictID, Model.DEODistrict, "Select One", new { @class = "form-control", id = "DEODistrict" })
+                                @Html.HiddenFor(model => model.DEODistrictID, new { id = "DEODistrictID" }) <!-- Add a hidden field for State ID -->
+                                @Html.ValidationMessageFor(model => model.DEODistrictName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Name of Application <span style="color:red">*</span></label>
+                                @Html.EditorFor(model => model.ApplicantName, new { htmlAttributes = new { @class = "form-control  ", id = "ApplicantName" } })
+                                @*//@Html.HiddenFor(model => model.Status, new { id = "Status" })*@
+                                @Html.ValidationMessageFor(model => model.ApplicantName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label>Applicant's Father / Husband Name <span style="color:red">*</span></label>
+                                @Html.EditorFor(model => model.ApplicantGuardianName, new { htmlAttributes = new { @class = "form-control  ", id = "ApplicantGuardianName" } })
+                                @*//@Html.HiddenFor(model => model.Status, new { id = "Status" })*@
+                                @Html.ValidationMessageFor(model => model.ApplicantGuardianName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Permanent Address <span style="color:red">*</span></label>
+                                <textarea class="form-control resizable" id="ApplicantAddress" name="ApplicantAddress" rows="4" maxlength="100"></textarea>
+                                @Html.ValidationMessageFor(model => model.ApplicantAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>State<span style="color:red">*</span></label>
+                                @Html.DropDownListFor(model => model.stateID, Model.ApplicantState, "Select one", new { @class = "form-control", id = "ApplicantState" })
+                                @Html.HiddenFor(model => model.stateID, new { id = "stateID" }) <!-- Add a hidden field for Zone ID -->
+                                @Html.ValidationMessageFor(model => model.stateName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>District<span style="color:red">*</span></label>
+                                @Html.DropDownListFor(model => model.DistrictID, Model.ApplicantDistrict, "Select one", new { @class = "form-control", id = "ApplicantDistrict" })
+                                @Html.HiddenFor(model => model.DistrictID, new { id = "stateID" }) <!-- Add a hidden field for Zone ID -->
+                                @Html.ValidationMessageFor(model => model.DistrictName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Capacity of Application<span style="color:red">*</span></label>
+                                @Html.DropDownListFor(model => model.CapacityID, Model.ApplicantCapacity, "Select One", new { @class = "form-control", id = "ApplicantCapacity" })
+                                @Html.HiddenFor(model => model.CapacityID, new { id = "CapacityID" }) <!-- Add a hidden field for Zone ID -->
+                                @Html.ValidationMessageFor(model => model.CapacityName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>PAN of Application<span style="color:red">*</span></label>
+                                @Html.EditorFor(model => model.ApplicantPAN, new { htmlAttributes = new { @class = "form-control  ", id = "ApplicantPAN" } })
+                                @Html.HiddenFor(model => model.PanID, new { id = "DistrictId" })
+                                @Html.ValidationMessageFor(model => model.ApplicantPAN, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Mobile No. of Application<span style="color:red">*</span></label>
+                                @Html.EditorFor(model => model.ApplicantMobNo, new { htmlAttributes = new { @class = "form-control  ", id = "ApplicantMobNo", @maxlength = "10", pattern = "[7-9]{1}[0-9]{9}" } })
+                                @Html.HiddenFor(model => model.MobNoID, new { id = "MobNoID" })
+                                @Html.ValidationMessageFor(model => model.ApplicantMobNo, "", new { @class = "text-danger mobile" })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>E-mail of Application<span style="color:red">*</span></label>
+                                @Html.EditorFor(model => model.ApplicantEmail, new { htmlAttributes = new { @class = "form-control  ", id = "ApplicantEmail", type = "email", pattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,63}$" } })
+                                @Html.HiddenFor(model => model.EmailID, new { id = "EmailID" })
+                                @Html.ValidationMessageFor(model => model.ApplicantEmail, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <br />
+                            <input type="button" value="Generate OTP" class="btn btn-primary" id="GenerateOTP" />
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Enter OTP<span style="color:red">*</span></label>
+                                @Html.EditorFor(model => model.ApplicationStatus, new { htmlAttributes = new { @class = "form-control  ", id = "ApplicationStatus" } })
+                                @*@Html.HiddenFor(model => model.Status, new { id = "Status" })*@
+                                @Html.ValidationMessageFor(model => model.ApplicationStatus, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <br />
+                                <input type="button" value="Verify OTP" class="btn btn-primary" id="VerifyOTP" />
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <input type="submit" value="Save" class="btn btn-primary btn-sm" id="object" />
+                            @*<button type="submit" value="Save" class="btn btn-primary btn-sm" id="object">Save</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+}
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+    // Add a JavaScript function to initialize the date picker
+    $(document).ready(function () {
+
+
+        alert("hi");
+        //For adding the Current Date of the Licence Registration
+        var monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+        // Get the current date
+        var currentDate = new Date();
+        // Format the date as "dd-MMM-yyyy"
+        var formattedDate = currentDate.getDate() + "-" + monthNames[currentDate.getMonth()] + "-" + currentDate.getFullYear();
+        // Set the formatted date to the input field
+        $("#ApplicantRegDate").val(formattedDate);
+        $("#ApplicantRegDate").prop("readonly", true); // Use "readonly" instead of "disabled" for input fields
+        // Validation
+
+        $("#ApplicantMobNo").on("input", function () {
+            var input = $(this).val();
+            var pattern = /^[7-9]\d{9}$/;
+
+            if (input.length <= 10 && pattern.test(input)) {
+                $("#MobNoID").val(input);
+                $(".mobile").text("");
+            } else {
+                $(".mobile").text("Mobile number must be valid.");
+            }
+        });
+
+
+
+
+
+
+
+
+    });
+</script>
